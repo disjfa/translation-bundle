@@ -1,0 +1,49 @@
+{% extends "admin.html.twig" %}
+
+{% trans_default_domain 'admin' %}
+
+{% block page_title_text %}
+    {{ 'admin.translator.page_title' | trans | desc('Translator') }}
+{% endblock %}
+
+{% block body %}
+    <div class="container" v-pre>
+        <div class="row">
+            <div class="col-lg-3 col bg-light">
+                <div class="py-3">
+                    <ul>
+                        {% for domain in domains %}
+                            <li>
+                                <a href="{{ path('admin_translator_index', {'domain': domain }) }}">{{ domain }}</a>
+                            </li>
+                        {% endfor %}
+                    </ul>
+                </div>
+            </div>
+            <div class="col-lg-9 col">
+                <div class="py-3 table-responsive">
+                    <table class="table">
+                        <tr>
+                            <th>{{ 'table.head.domain' | trans }}</th>
+                            <th>{{ 'table.head.code' | trans }}</th>
+                            <th>{{ 'table.head.text' | trans }}</th>
+                            <th></th>
+                        </tr>
+                        {% for row in result %}
+                            <tr>
+                                <td>{{ row.domain }}</td>
+                                <td>{{ row.code }}</td>
+                                <td>{{ row.text }}</td>
+                                <th>
+                                    <a href="{{ path('admin_translator_edit', {'code': row.code, 'domain': row.domain, 'locale': locale}) }}">edit</a>
+                                </th>
+                            </tr>
+                        {% endfor %}
+                    </table>
+
+                    {{ knp_pagination_render(result) }}
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

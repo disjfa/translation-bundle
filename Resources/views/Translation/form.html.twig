@@ -1,0 +1,17 @@
+{% extends 'admin.html.twig' %}
+
+{% block body %}
+    <div class="container" v-pre>
+        {{ form_start(form) }}
+        {{ form_rest(form) }}
+        <button type="submit" class="btn btn-primary">
+            save
+        </button>
+        {{ form_end(form) }}
+    </div>
+{% endblock %}
+
+{% block page_title_text %}
+    {{ 'page_title.translator.title' | trans }}
+{% endblock %}
+
