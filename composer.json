@@ -1,28 +1,29 @@
 {
-  "name": "disjfa/translation-bundle",
-  "description": "TranslationBundle bundle",
-  "keywords": [
-    "translations"
-  ],
-  "type": "symfony-bundle",
-  "require": {
-    "symfony/orm-pack": "^1.0"
-  },
-  "license": "MIT",
-  "authors": [
-    {
-      "name": "disjfa",
-      "email": "disjfa@disjfa.nl"
+    "name": "disjfa/translation-bundle",
+    "description": "TranslationBundle bundle",
+    "keywords": [
+        "translations"
+    ],
+    "type": "symfony-bundle",
+    "require": {
+        "symfony/orm-pack": "^1.0",
+        "knplabs/knp-paginator-bundle": "^2.8"
+    },
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "disjfa",
+            "email": "disjfa@disjfa.nl"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "Disjfa\\TranslationBundle\\": ""
+        }
+    },
+    "extra": {
+        "branch-alias": {
+            "dev-master": "0.1.x-dev"
+        }
     }
-  ],
-  "autoload": {
-    "psr-4": {
-      "Disjfa\\TranslationBundle\\": ""
-    }
-  },
-  "extra": {
-    "branch-alias": {
-      "dev-master": "0.1.x-dev"
-    }
-  }
 }

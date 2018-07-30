@@ -1,32 +1,45 @@
-{% extends "admin.html.twig" %}
+{% extends '@DisjfaTranslation/layout.html.twig' %}
 
-{% trans_default_domain 'admin' %}
+{% trans_default_domain 'translation' %}
 
 {% block page_title_text %}
-    {{ 'admin.translator.page_title' | trans | desc('Translator') }}
+    {{ 'index.page_title' | trans }}
 {% endblock %}
 
 {% block body %}
     <div class="container" v-pre>
         <div class="row">
             <div class="col-lg-3 col bg-light">
-                <div class="py-3">
-                    <ul>
-                        {% for domain in domains %}
-                            <li>
-                                <a href="{{ path('admin_translator_index', {'domain': domain }) }}">{{ domain }}</a>
-                            </li>
-                        {% endfor %}
-                    </ul>
-                </div>
+                <form action="{{ path('admin_translator_index') }}" class="py-3">
+                    <h4>{{ 'index.search' | trans }}</h4>
+                    <div class="input-group mb-3">
+                        <input type="text" class="form-control" name="search" placeholder="{{ 'placeholder.search' | trans }}" aria-label="{{ 'placeholder.search' | trans }}" aria-describedby="button-search" value="{{ search }}">
+                        <div class="input-group-append">
+                            <button class="btn btn-outline-secondary" type="submit" id="button-search">{{ 'button.search' | trans }}</button>
+                        </div>
+                    </div>
+                    <h4>{{ 'index.domains' | trans }}</h4>
+                    {% for domain in domains %}
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="domain" id="domain-{{ domain }}" value="{{ domain }}"{% if requestDomain == domain %} checked{% endif %}>
+                            <label class="form-check-label" for="domain-{{ domain }}">
+                                {{ domain }}
+                            </label>
+                        </div>
+                    {% endfor %}
+                    <br>
+                    <div class="form-group">
+                        <button type="submit">{{ 'form.search' | trans }}</button>
+                    </div>
+                </form>
             </div>
             <div class="col-lg-9 col">
                 <div class="py-3 table-responsive">
                     <table class="table">
                         <tr>
-                            <th>{{ 'table.head.domain' | trans }}</th>
-                            <th>{{ 'table.head.code' | trans }}</th>
-                            <th>{{ 'table.head.text' | trans }}</th>
+                            <th>{{ 'index.table_head.domain' | trans }}</th>
+                            <th>{{ 'index.table_head.code' | trans }}</th>
+                            <th>{{ 'index.table_head.text' | trans }}</th>
                             <th></th>
                         </tr>
                         {% for row in result %}
@@ -37,6 +50,10 @@
                                 <th>
                                     <a href="{{ path('admin_translator_edit', {'code': row.code, 'domain': row.domain, 'locale': locale}) }}">edit</a>
                                 </th>
+                            </tr>
+                        {% else %}
+                            <tr>
+                                <td colspan="4"><em>{{ 'index.no_results' | trans }}</em></td>
                             </tr>
                         {% endfor %}
                     </table>

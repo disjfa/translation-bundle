@@ -1,6 +1,6 @@
 <?php
 
-namespace Disjfa\MozaicBundle;
+namespace Disjfa\TranslationBundle;
 
 use Symfony\Component\HttpKernel\Bundle\Bundle;
 

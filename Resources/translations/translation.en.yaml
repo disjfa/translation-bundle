@@ -1,0 +1,20 @@
+index:
+    page_title: Translations
+    table_head:
+        domain: Domain
+        code: Code
+        text: Text
+    domains: Domains
+    search: Search
+    no_results: No results found
+flash:
+    translation_saved: Translation saved!
+layout:
+    title: Translations
+    page_title: Translations
+placeholder:
+    search: search...
+button:
+    search: Search
+form:
+    search: Search
