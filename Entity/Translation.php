@@ -6,7 +6,7 @@ use Doctrine\ORM\Mapping as ORM;
 
 /**
  * @ORM\Entity(repositoryClass="TranslationRepository")
- * @ORM\Table(name="translations")
+ * @ORM\Table(name="disjfa_translations")
  */
 class Translation
 {

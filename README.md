@@ -25,9 +25,9 @@ Just install it using composer, to add this to your symfony project
 composer req disjfa/translation-bundle
 ```
 
-And set up the routes in `config/routes/disjfa_mozaic.yaml` in symfony4 or arr them to your routes:
+And set up the routes in `config/routes/disjfa_translation.yaml` in symfony4 or arr them to your routes:
 ```yaml
-disjfa_mozaic:
+disjfa_translation:
     resource: '@DisjfaTranslationBundle/Controller/'
     type:     annotation
 ```
@@ -38,7 +38,7 @@ Now you can go to http://localhost/translation to edit the routes.
 
 Also you can prefix the routes to move them to an admin route
 ```yaml
-disjfa_mozaic:
+disjfa_translation:
     resource: '@DisjfaTranslationBundle/Controller/'
     type:     annotation
     prefix:   /admin
