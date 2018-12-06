@@ -18,3 +18,5 @@ button:
     search: Search
 form:
     search: Search
+menu:
+    translation: Translations

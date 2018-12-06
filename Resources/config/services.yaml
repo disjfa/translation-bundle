@@ -23,4 +23,4 @@ services:
     Disjfa\TranslationBundle\Menu\TranslationAdminMenuListener:
         autowire: true
         tags:
-        - { name: 'kernel.event_listener', event: 'glynn_admin.menu_configure', method: 'onMenuConfigure', priority: -100 }
+        - { name: 'kernel.event_listener', event: 'admin.menu_configure', method: 'onMenuConfigure', priority: -100 }
