@@ -9,7 +9,8 @@
         "symfony/orm-pack": "^1.0",
         "knplabs/knp-paginator-bundle": "^2.8",
         "disjfa/menu-bundle": "^0.1.1",
-        "symfony/translation": "^3|^4"
+        "symfony/translation": "^3|^4",
+        "symfony/twig-bundle": "^3|^4"
     },
     "license": "MIT",
     "authors": [
