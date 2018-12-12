@@ -5,6 +5,7 @@ namespace Disjfa\TranslationBundle\Controller;
 use Disjfa\TranslationBundle\Entity\Translation;
 use Disjfa\TranslationBundle\Form\Type\TranslationType;
 use Doctrine\ORM\NonUniqueResultException;
+use Knp\Component\Pager\PaginatorInterface;
 use Psr\Cache\InvalidArgumentException;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Cache\Adapter\AdapterInterface;
@@ -27,17 +28,23 @@ class TranslationController extends AbstractController
      * @var AdapterInterface
      */
     private $cache;
+    /**
+     * @var PaginatorInterface
+     */
+    private $paginator;
 
     /**
      * TranslatorController constructor.
      * @param TranslatorInterface $translator
      * @param AdapterInterface $cache
+     * @param PaginatorInterface $paginator
      */
-    public function __construct(TranslatorInterface $translator, AdapterInterface $cache)
+    public function __construct(TranslatorInterface $translator, AdapterInterface $cache, PaginatorInterface $paginator)
     {
         /** @var Translator $translator */
         $this->translator = $translator;
         $this->cache = $cache;
+        $this->paginator = $paginator;
     }
 
     /**
@@ -76,7 +83,7 @@ class TranslationController extends AbstractController
             'domains' => $domains,
             'requestDomain' => $requestDomain,
             'search' => $search,
-            'result' => $this->get('knp_paginator')->paginate($result, $request->query->getInt('page', 1)),
+            'result' => $this->paginator->paginate($result, $request->query->getInt('page', 1)),
             'locale' => $this->translator->getLocale(),
         ]);
     }

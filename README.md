@@ -44,6 +44,14 @@ disjfa_translation:
     prefix:   /admin
 ```
 
+## Optional
+Setup the knp paginator service and set up the bootstrap theme
+```yaml
+knp_paginator:
+    template:
+        pagination: '@KnpPaginator/Pagination/twitter_bootstrap_v4_pagination.html.twig'     # sliding pagination controls template
+```
+
 ## Enjoy
 
 You are done. Now edit the translations as you like
