@@ -11,10 +11,11 @@ use Symfony\Component\HttpKernel\DependencyInjection\Extension;
 class DisjfaTranslationExtension extends Extension
 {
     /**
-     * Build the extension services
+     * Build the extension services.
      *
-     * @param array $configs
+     * @param array            $configs
      * @param ContainerBuilder $container
+     *
      * @throws Exception
      */
     public function load(array $configs, ContainerBuilder $container)

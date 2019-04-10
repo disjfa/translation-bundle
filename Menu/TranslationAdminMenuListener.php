@@ -22,6 +22,7 @@ class TranslationAdminMenuListener
     {
         $this->translator = $translator;
     }
+
     /**
      * @param ConfigureMenuEvent $event
      */
@@ -31,7 +32,7 @@ class TranslationAdminMenuListener
             $menu = $event->getMenu();
             $menu->addChild('disjfa_translation', [
                 'label' => $this->translator->trans('menu.translation', [], 'translation'),
-                'route' => 'admin_translator_index'
+                'route' => 'admin_translator_index',
             ])->setExtra('icon', 'fa-language');
         } catch (RouteNotFoundException $e) {
             // routing.yml not set up

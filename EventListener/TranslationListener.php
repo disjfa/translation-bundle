@@ -27,13 +27,14 @@ class TranslationListener
 
     /**
      * RequestListener constructor.
-     * @param TranslatorInterface $translator
+     *
+     * @param TranslatorInterface    $translator
      * @param EntityManagerInterface $entityManager
-     * @param AdapterInterface $cache
+     * @param AdapterInterface       $cache
      */
     public function __construct(TranslatorInterface $translator, EntityManagerInterface $entityManager, AdapterInterface $cache)
     {
-        /** @var Translator $translator */
+        /* @var Translator $translator */
         $this->translator = $translator;
         $this->entityManager = $entityManager;
         $this->cache = $cache;
@@ -41,22 +42,23 @@ class TranslationListener
 
     /**
      * @param GetResponseEvent $event
+     *
      * @throws InvalidArgumentException
      */
     public function onKernelRequest(GetResponseEvent $event)
     {
-        if (!$event->isMasterRequest()) {
+        if ( ! $event->isMasterRequest()) {
             return;
         }
 
         $catalogue = $this->translator->getCatalogue();
         $locale = $this->translator->getLocale();
 
-        $translationCache = $this->cache->getItem('translations.' . $locale);
+        $translationCache = $this->cache->getItem('translations.'.$locale);
         if (false === $translationCache->isHit()) {
             $translations = $this->entityManager->getRepository(Translation::class)->findByLocale($locale);
 
-            $dbMessages = array();
+            $dbMessages = [];
             foreach ($translations as $translation) {
                 $dbMessages[$translation->getDomain()][$translation->getCode()] = $translation->getText();
             }

@@ -35,13 +35,14 @@ class TranslationController extends AbstractController
 
     /**
      * TranslatorController constructor.
+     *
      * @param TranslatorInterface $translator
-     * @param AdapterInterface $cache
-     * @param PaginatorInterface $paginator
+     * @param AdapterInterface    $cache
+     * @param PaginatorInterface  $paginator
      */
     public function __construct(TranslatorInterface $translator, AdapterInterface $cache, PaginatorInterface $paginator)
     {
-        /** @var Translator $translator */
+        /* @var Translator $translator */
         $this->translator = $translator;
         $this->cache = $cache;
         $this->paginator = $paginator;
@@ -49,7 +50,9 @@ class TranslationController extends AbstractController
 
     /**
      * @Route("", name="admin_translator_index")
+     *
      * @param Request $request
+     *
      * @return Response
      */
     public function index(Request $request)
@@ -68,7 +71,7 @@ class TranslationController extends AbstractController
 
         foreach ($currentDomains as $domain) {
             foreach ($this->translator->getCatalogue()->all($domain) as $code => $text) {
-                if ($search && false === stripos($code, $search) && false === stripos($text , $search)) {
+                if ($search && false === stripos($code, $search) && false === stripos($text, $search)) {
                     continue;
                 }
                 $result[] = [
@@ -77,7 +80,7 @@ class TranslationController extends AbstractController
                     'text' => $text,
                 ];
             }
-        };
+        }
 
         return $this->render('@DisjfaTranslation/Translation/index.html.twig', [
             'domains' => $domains,
@@ -90,11 +93,14 @@ class TranslationController extends AbstractController
 
     /**
      * @Route("/edit/{locale}/{domain}/{code}", name="admin_translator_edit")
+     *
      * @param Request $request
-     * @param string $locale
-     * @param string $domain
-     * @param string $code
+     * @param string  $locale
+     * @param string  $domain
+     * @param string  $code
+     *
      * @return Response
+     *
      * @throws NonUniqueResultException
      * @throws InvalidArgumentException
      */
@@ -112,12 +118,12 @@ class TranslationController extends AbstractController
             $em->persist($translation);
             $em->flush();
 
-            $this->cache->deleteItem('translations.' . $locale);
+            $this->cache->deleteItem('translations.'.$locale);
 
             $this->addFlash('success', $this->translator->trans('flash.translation_saved', [], 'translation'));
+
             return $this->redirectToRoute('admin_translator_index');
         }
-
 
         return $this->render('@DisjfaTranslation/Translation/form.html.twig', [
             'form' => $form->createView(),
