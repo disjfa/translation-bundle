@@ -128,6 +128,9 @@ class TranslationController extends AbstractController
         return $this->render('@DisjfaTranslation/Translation/form.html.twig', [
             'form' => $form->createView(),
             'translation' => $translation,
+            'domains' => $this->translator->getCatalogue()->getDomains(),
+            'search' => $request->query->get('search'),
+            'requestDomain' => $request->query->get('domain'),
         ]);
     }
 }

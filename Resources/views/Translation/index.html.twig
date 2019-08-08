@@ -6,7 +6,11 @@
     {{ 'index.page_title' | trans }}
 {% endblock %}
 
-{% block body %}
+{% block content_title %}
+    {{ 'index.page_title' | trans }}
+{% endblock %}
+
+{% block main %}
     <div class="container" v-pre>
         <div class="row">
             <div class="col-lg-3 col bg-light">

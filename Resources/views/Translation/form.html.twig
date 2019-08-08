@@ -1,14 +1,48 @@
 {% extends '@DisjfaTranslation/layout.html.twig' %}
 
-{% block body %}
+{% trans_default_domain 'translation' %}
+
+{% block main %}
     <div class="container" v-pre>
-        {{ form_start(form) }}
-        {{ form_rest(form) }}
-        <button type="submit" class="btn btn-primary">
-            save
-        </button>
-        {{ form_end(form) }}
+        <div class="row">
+            <div class="col-lg-3 col bg-light">
+                <form action="{{ path('admin_translator_index') }}#result" method="get" class="py-3">
+                    <h4>{{ 'index.search' | trans }}</h4>
+                    <div class="input-group mb-3">
+                        <input type="text" class="form-control" name="search" placeholder="{{ 'placeholder.search' | trans }}" aria-label="{{ 'placeholder.search' | trans }}" aria-describedby="button-search" value="{{ search }}">
+                        <div class="input-group-append">
+                            <button class="btn btn-outline-secondary" type="submit" id="button-search">{{ 'button.search' | trans }}</button>
+                        </div>
+                    </div>
+                    <h4>{{ 'index.domains' | trans }}</h4>
+                    {% for domain in domains %}
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="domain" id="domain-{{ domain }}" value="{{ domain }}"{% if requestDomain == domain %} checked{% endif %}>
+                            <label class="form-check-label" for="domain-{{ domain }}">
+                                {{ domain }}
+                            </label>
+                        </div>
+                    {% endfor %}
+                    <br>
+                    <div class="form-group">
+                        <button type="submit">{{ 'form.search' | trans }}</button>
+                    </div>
+                </form>
+            </div>
+            <div class="col-lg-9 col py-3" id="result">
+                {{ form_start(form) }}
+                {{ form_rest(form) }}
+                <button type="submit" class="btn btn-primary">
+                    save
+                </button>
+                {{ form_end(form) }}
+            </div>
+        </div>
     </div>
+{% endblock %}
+
+{% block content_title %}
+    {{ translation.code }}
 {% endblock %}
 
 {% block page_title_text %}
