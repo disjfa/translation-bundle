@@ -5,11 +5,17 @@
         "translations"
     ],
     "type": "symfony-bundle",
+    "homepage": "https://github.com/disjfa/translation-bundle",
+    "support": {
+        "issues": "https://github.com/disjfa/translation-bundle/issues",
+        "source": "https://github.com/disjfa/translation-bundle"
+    },
     "require": {
         "symfony/orm-pack": "^1.0",
-        "knplabs/knp-paginator-bundle": "^2.8",
-        "symfony/translation": "^3|^4",
-        "symfony/twig-bundle": "^3|^4"
+        "knplabs/knp-paginator-bundle": "^4",
+        "symfony/translation": "^3|^4|^5",
+        "symfony/twig-bundle": "^3|^4|^5",
+        "symfony/form": "^3|^4|^5"
     },
     "license": "MIT",
     "authors": [

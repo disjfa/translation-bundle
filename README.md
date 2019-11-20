@@ -1,5 +1,12 @@
 # Translation bundle
 
+[![Check on packagist][packagist-badge]][packagist]
+[![MIT License][license-badge]][LICENSE]
+
+[![Watch on GitHub][github-watch-badge]][github-watch]
+[![Star on GitHub][github-star-badge]][github-star]
+[![Tweet][twitter-badge]][twitter]
+
 Hello, and welcome to my Translation Bundle. This is a bundle for symfony and it is using a doctrine layer to append on the existing translations in your system.
 
 ## What does this bundle solve
@@ -55,3 +62,14 @@ knp_paginator:
 ## Enjoy
 
 You are done. Now edit the translations as you like
+
+[packagist-badge]: https://img.shields.io/packagist/v/disjfa/translation-bundle
+[packagist]: https://packagist.org/packages/disjfa/translation-bundle
+[license]: https://github.com/disjfa/translation-bundle/blob/master/LICENSE
+[license-badge]: https://img.shields.io/github/license/disjfa/translation-bundle.svg
+[github-watch-badge]: https://img.shields.io/github/watchers/disjfa/translation-bundle.svg?style=social
+[github-watch]: https://github.com/disjfa/translation-bundle/watchers
+[github-star-badge]: https://img.shields.io/github/stars/disjfa/translation-bundle.svg?style=social
+[github-star]: https://github.com/disjfa/translation-bundle/stargazers
+[twitter-badge]: https://img.shields.io/twitter/url/https/github.com/disjfa/translation-bundle.svg?style=social
+[twitter]: https://twitter.com/intent/tweet?text=Check%20out%20translation-bundle!%20-%20Cool%mail%20translations%20for%20symfony!%20Thanks%20@disjfa%20https://github.com/disjfa/translation-bundle%20%F0%9F%A4%97
