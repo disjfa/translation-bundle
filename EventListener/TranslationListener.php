@@ -27,10 +27,6 @@ class TranslationListener
 
     /**
      * RequestListener constructor.
-     *
-     * @param TranslatorInterface    $translator
-     * @param EntityManagerInterface $entityManager
-     * @param AdapterInterface       $cache
      */
     public function __construct(TranslatorInterface $translator, EntityManagerInterface $entityManager, AdapterInterface $cache)
     {
@@ -41,8 +37,6 @@ class TranslationListener
     }
 
     /**
-     * @param GetResponseEvent $event
-     *
      * @throws InvalidArgumentException
      */
     public function onKernelRequest(GetResponseEvent $event)

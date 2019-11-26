@@ -35,10 +35,6 @@ class TranslationController extends AbstractController
 
     /**
      * TranslatorController constructor.
-     *
-     * @param TranslatorInterface $translator
-     * @param AdapterInterface    $cache
-     * @param PaginatorInterface  $paginator
      */
     public function __construct(TranslatorInterface $translator, AdapterInterface $cache, PaginatorInterface $paginator)
     {
@@ -50,8 +46,6 @@ class TranslationController extends AbstractController
 
     /**
      * @Route("", name="admin_translator_index")
-     *
-     * @param Request $request
      *
      * @return Response
      */
@@ -93,11 +87,6 @@ class TranslationController extends AbstractController
 
     /**
      * @Route("/edit/{locale}/{domain}/{code}", name="admin_translator_edit")
-     *
-     * @param Request $request
-     * @param string  $locale
-     * @param string  $domain
-     * @param string  $code
      *
      * @return Response
      *

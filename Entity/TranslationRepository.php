@@ -15,10 +15,6 @@ use Doctrine\ORM\NonUniqueResultException;
 class TranslationRepository extends EntityRepository
 {
     /**
-     * @param string $locale
-     * @param string $domain
-     * @param string $code
-     *
      * @return mixed
      *
      * @throws NonUniqueResultException
@@ -37,8 +33,6 @@ class TranslationRepository extends EntityRepository
     }
 
     /**
-     * @param string $locale
-     *
      * @return Translation[]|ArrayCollection
      */
     public function findByLocale(string $locale)
