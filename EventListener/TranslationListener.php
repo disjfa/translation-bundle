@@ -7,8 +7,8 @@ use Doctrine\ORM\EntityManagerInterface;
 use Psr\Cache\InvalidArgumentException;
 use Symfony\Bundle\FrameworkBundle\Translation\Translator;
 use Symfony\Component\Cache\Adapter\AdapterInterface;
-use Symfony\Component\HttpKernel\Event\GetResponseEvent;
-use Symfony\Component\Translation\TranslatorInterface;
+use Symfony\Component\HttpKernel\Event\RequestEvent;
+use Symfony\Contracts\Translation\TranslatorInterface;
 
 class TranslationListener
 {
@@ -39,7 +39,7 @@ class TranslationListener
     /**
      * @throws InvalidArgumentException
      */
-    public function onKernelRequest(GetResponseEvent $event)
+    public function onKernelRequest(RequestEvent $event)
     {
         if ( ! $event->isMasterRequest()) {
             return;

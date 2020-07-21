@@ -2,11 +2,12 @@
 
 namespace Disjfa\TranslationBundle\Menu;
 
-use Disjfa\MenuBundle\Menu\ConfigureMenuEvent;
+use Disjfa\MenuBundle\Menu\ConfigureAdminMenu;
+use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 use Symfony\Component\Routing\Exception\RouteNotFoundException;
-use Symfony\Component\Translation\TranslatorInterface;
+use Symfony\Contracts\Translation\TranslatorInterface;
 
-class TranslationAdminMenuListener
+class TranslationAdminMenuListener implements EventSubscriberInterface
 {
     /**
      * @var TranslatorInterface
@@ -21,7 +22,7 @@ class TranslationAdminMenuListener
         $this->translator = $translator;
     }
 
-    public function onMenuConfigure(ConfigureMenuEvent $event)
+    public function onMenuConfigure(ConfigureAdminMenu $event)
     {
         try {
             $menu = $event->getMenu();
@@ -33,5 +34,15 @@ class TranslationAdminMenuListener
             // routing.yml not set up
             return;
         }
+    }
+
+    /**
+     * @return array
+     */
+    public static function getSubscribedEvents()
+    {
+        return [
+            ConfigureAdminMenu::class => ['onMenuConfigure', -100],
+        ];
     }
 }
