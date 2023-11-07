@@ -11,11 +11,11 @@
         "source": "https://github.com/disjfa/translation-bundle"
     },
     "require": {
-        "symfony/orm-pack": "^1.0",
-        "knplabs/knp-paginator-bundle": "^4",
-        "symfony/translation": "^3|^4|^5",
-        "symfony/twig-bundle": "^3|^4|^5",
-        "symfony/form": "^3|^4|^5"
+        "symfony/orm-pack": "^2",
+        "knplabs/knp-paginator-bundle": "^6",
+        "symfony/translation": "^5|^6",
+        "symfony/twig-bundle": "^5|^6",
+        "symfony/form": "^5|^6"
     },
     "license": "MIT",
     "authors": [
