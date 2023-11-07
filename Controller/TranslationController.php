@@ -6,9 +6,9 @@ use Disjfa\TranslationBundle\Entity\Translation;
 use Disjfa\TranslationBundle\Form\Type\TranslationType;
 use Doctrine\ORM\NonUniqueResultException;
 use Knp\Component\Pager\PaginatorInterface;
+use Psr\Cache\CacheItemPoolInterface;
 use Psr\Cache\InvalidArgumentException;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
-use Symfony\Component\Cache\Adapter\AdapterInterface;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -24,8 +24,9 @@ class TranslationController extends AbstractController
      * @var TranslatorInterface
      */
     private $translator;
+
     /**
-     * @var AdapterInterface
+     * @var CacheItemPoolInterface
      */
     private $cache;
     /**
@@ -36,7 +37,7 @@ class TranslationController extends AbstractController
     /**
      * TranslatorController constructor.
      */
-    public function __construct(TranslatorInterface $translator, AdapterInterface $cache, PaginatorInterface $paginator)
+    public function __construct(TranslatorInterface $translator, CacheItemPoolInterface $cache, PaginatorInterface $paginator)
     {
         /* @var Translator $translator */
         $this->translator = $translator;

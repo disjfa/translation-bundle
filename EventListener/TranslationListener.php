@@ -4,6 +4,7 @@ namespace Disjfa\TranslationBundle\EventListener;
 
 use Disjfa\TranslationBundle\Entity\Translation;
 use Doctrine\ORM\EntityManagerInterface;
+use Psr\Cache\CacheItemPoolInterface;
 use Psr\Cache\InvalidArgumentException;
 use Symfony\Bundle\FrameworkBundle\Translation\Translator;
 use Symfony\Component\Cache\Adapter\AdapterInterface;
@@ -21,14 +22,14 @@ class TranslationListener
      */
     protected $entityManager;
     /**
-     * @var AdapterInterface
+     * @var CacheItemPoolInterface
      */
     protected $cache;
 
     /**
      * RequestListener constructor.
      */
-    public function __construct(TranslatorInterface $translator, EntityManagerInterface $entityManager, AdapterInterface $cache)
+    public function __construct(TranslatorInterface $translator, EntityManagerInterface $entityManager, CacheItemPoolInterface $cache)
     {
         /* @var Translator $translator */
         $this->translator = $translator;
@@ -41,7 +42,7 @@ class TranslationListener
      */
     public function onKernelRequest(RequestEvent $event)
     {
-        if ( ! $event->isMasterRequest()) {
+        if ( ! $event->isMainRequest()) {
             return;
         }
 
